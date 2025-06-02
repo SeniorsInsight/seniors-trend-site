@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Seniors Trend Report</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+    html, body {
+      margin: 0; padding: 0; height: 100%;
+      font-family: 'Open Sans', sans-serif;
+      overflow-x: hidden;
+      background: #f9f5f1;
+      color: #333;
+    }
+
+    #background {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+      filter: brightness(0.6);
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    #background::after {
+      content: "";
+      position: absolute;
+      top:0; left:0; right:0; bottom:0;
+      background: linear-gradient(135deg, rgba(255,223,186,0.3), rgba(255,183,76,0.3));
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .content {
+      position: relative;
+      max-width: 700px;
+      margin: 80px auto 40px auto;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 35px 45px;
+      border-radius: 14px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+      z-index: 10;
+      text-align: center;
+
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      font-size: 2.4em;
+      margin-bottom: 0.6em;
+      color: #222;
+    }
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.6em;
+      margin-bottom: 1.3em;
+      color: #444;
+    }
+
+    .email-form {
+      margin-top: 20px;
+      margin-bottom: 25px;
+    }
+
+    .email-form input[type="email"] {
+      padding: 12px;
+      width: 70%;
+      max-width: 400px;
+      font-size: 1.1em;
+      border: 1.8px solid #ccc;
+      border-radius: 8px;
+      transition: border-color 0.3s ease;
+    }
+
+    .email-form input[type="email"]:focus {
+      outline: none;
+      border-color: #ffb94c;
+      box-shadow: 0 0 8px rgba(255, 185, 76, 0.6);
+    }
+
+    .email-form button {
+      padding: 12px 28px;
+      font-size: 1.1em;
+      background-color: #ffb94c;
+      color: #333;
+      border: none;
+      border-radius: 8px;
+      margin-left: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .email-form button:hover,
+    .email-form button:focus {
+      background-color: #e6a23c;
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(230, 162, 60, 0.6);
+      outline: none;
+    }
+
+    .testimonial {
+      font-style: italic;
+      color: #666;
+      margin: 25px 0 30px 0;
+      font-size: 1.1em;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .what-you-get {
+      text-align: left;
+      max-width: 500px;
+      margin: 0 auto 30px auto;
+      font-size: 1.1em;
+      color: #444;
+    }
+
+    .what-you-get ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+
+    .what-you-get ul li {
+      margin-bottom: 10px;
+      line-height: 1.5em;
+    }
+
+    /* Accessibility */
+    .email-form input[type="email"]:focus-visible,
+    .email-form button:focus-visible {
+      outline: 3px solid #ffb94c;
+      outline-offset: 2px;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .content {
+        margin: 50px 15px 30px 15px;
+        padding: 25px 20px;
+      }
+      .email-form input[type="email"] {
+        width: 100%;
+        margin-bottom: 12px;
+      }
+      .email-form button {
+        width: 100%;
+        margin-left: 0;
+      }
+      .what-you-get {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="background"></div>
+
+  <main class="content" tabindex="0" role="main" aria-label="Seniors Trend Report Introduction and Email Signup">
+
+    <h1>Seniors Trend Report</h1>
+
+    <p>
+      Stay informed with weekly insights on trends shaping senior living — health, technology, lifestyle, and more.
+    </p>
+
+    <div class="what-you-get" aria-label="What you will get">
+      <strong>What you’ll get:</strong>
+      <ul>
+        <li>Weekly trend insights that matter to seniors</li>
+        <li>Easy-to-understand, practical info</li>
+        <li>Tips for businesses, caregivers, and families</li>
+      </ul>
+    </div>
+
+    <form class="email-form" onsubmit="event.preventDefault(); alert('Thank you! Your sample trend report will be sent shortly.');" aria-label="Email signup form">
+      <input type="email" placeholder="Enter your email" aria-required="true" aria-label="Email address" required />
+      <button type="submit">Get Free Sample</button>
+    </form>
+
+    <div class="testimonial" aria-label="Testimonial">
+      “This report helped me stay ahead with the latest tools and ideas. Highly recommend!” – Mary, 72
+    </div>
+
+  </main>
+
+</body>
+</html>
