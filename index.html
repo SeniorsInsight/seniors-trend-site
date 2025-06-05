@@ -218,8 +218,8 @@
       </ul>
     </div>
 
-    <form class="email-form" id="signupForm" aria-label="Email signup form" novalidate>
-      <input type="email" id="emailInput" placeholder="Enter your email" aria-required="true" aria-label="Email address" required />
+    <form class="email-form" onsubmit="event.preventDefault(); showThankYouPopup();" aria-label="Email signup form">
+      <input type="email" placeholder="Enter your email" aria-required="true" aria-label="Email address" required />
       <button type="submit">Get Free Sample</button>
     </form>
 
@@ -238,54 +238,12 @@
   </div>
 
   <script>
-    const apiKey = 'eo_e9f7c85b2040bd6b857232db95d038d7d02c1e10f3e5f2558093d3cca6d988e9'; // <-- Replace with your EmailOctopus API key
-    const listId = 'e205839a-3f23-11f0-a1aa-7ff4af38c3b7'; // <-- Replace with your EmailOctopus List ID
-
-    const form = document.getElementById('signupForm');
-    const emailInput = document.getElementById('emailInput');
-    const thankYouPopup = document.getElementById('thankYouPopup');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const email = emailInput.value.trim();
-      if (!email) {
-        alert('Please enter a valid email address.');
-        return;
-      }
-
-      try {
-        const response = await fetch(`https://emailoctopus.com/api/1.6/lists/${listId}/contacts`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'API-Key': apiKey
-          },
-          body: JSON.stringify({
-            email_address: email,
-            status: 'subscribed'
-          })
-        });
-
-        if (response.ok) {
-          emailInput.value = '';
-          showThankYouPopup();
-        } else {
-          const errorData = await response.json();
-          alert('Subscription failed: ' + (errorData.message || 'Unknown error'));
-        }
-      } catch (error) {
-        alert('Network error: ' + error.message);
-      }
-    });
-
     function showThankYouPopup() {
-      thankYouPopup.style.display = 'block';
+      document.getElementById('thankYouPopup').style.display = 'block';
     }
 
     function closePopup() {
-      thankYouPopup.style.display = 'none';
+      document.getElementById('thankYouPopup').style.display = 'none';
     }
   </script>
 
